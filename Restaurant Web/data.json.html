@@ -1,0 +1,47 @@
+<div class="menu-card" data-category="burger">
+    <img src="..." alt="Burger">
+    <h3>Classic Burger</h3>
+    <p>...</p>
+    <span>$8.99</span>
+</div>
+
+<div class="menu-card" data-category="pizza">
+    <img src="..." alt="Pizza">
+    <h3>Margherita Pizza</h3>
+    <p>...</p>
+    <span>$10.99</span>
+</div>
+
+<div class="menu-card" data-category="pasta">
+    <img src="..." alt="Pasta">
+    <h3>Spaghetti Carbonara</h3>
+    <p>...</p>
+    <span>$9.99</span>
+</div>
+<div class="menu-filter">
+    <button data-filter="all">All</button>
+    <button data-filter="burger">Burger</button>
+    <button data-filter="pizza">Pizza</button>
+    <button data-filter="pasta">Pasta</button>
+</div>
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing form validation code...
+
+    const filterButtons = document.querySelectorAll('.menu-filter button');
+    const menuCards = document.querySelectorAll('.menu-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            menuCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || filter === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
